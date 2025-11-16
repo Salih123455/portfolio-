@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Professionnel | Salih Hrouchane</title>
+
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+
+  
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #0d0d0d;
+      color: #f5f5f5;
+      overflow-x: hidden;
+    }
+
+    
+    header {
+      background: #000;
+      color: #f0c36d;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 50px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(240,195,109,0.1);
+    }
+
+    header img {
+      height: 60px;
+      border-radius: 50%;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #f0c36d;
+    }
+
+    section {
+      padding: 80px 50px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #f0c36d;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+   
+    .loader-wrapper {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      transition: opacity 0.5s ease;
+    }
+
+   
+    .load-text {
+      display: flex;
+      gap: 5px;
+      font-size: 2rem;
+      color: #f0c36d;
+      margin-bottom: 15px;
+    }
+
+    .load-text span {
+      display: inline-block;
+      animation: spin 1s linear infinite;
+    }
+
+    .load-text span:nth-child(1) { animation-delay: 0s; }
+    .load-text span:nth-child(2) { animation-delay: 0.1s; }
+    .load-text span:nth-child(3) { animation-delay: 0.2s; }
+    .load-text span:nth-child(4) { animation-delay: 0.3s; }
+    .load-text span:nth-child(5) { animation-delay: 0.4s; }
+    .load-text span:nth-child(6) { animation-delay: 0.5s; }
+    .load-text span:nth-child(7) { animation-delay: 0.6s; }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(20deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+   
+    .loader-dots {
+      display: flex;
+      gap: 10px;
+    }
+
+    .loader-dots span {
+      width: 15px;
+      height: 15px;
+      background-color: #f0c36d;
+      border-radius: 50%;
+      animation: bounce 0.6s infinite alternate;
+    }
+
+    .loader-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .loader-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0); }
+    }
+
+   
+    .about img {
+      width: 160px;
+      border-radius: 50%;
+      border: 3px solid #f0c36d;
+      margin-bottom: 20px;
+    }
+
+    .about h1 { color: #fff; font-size: 2rem; }
+    .about h2 { color: #f0c36d; font-size: 1.3rem; margin-bottom: 10px; }
+    .about p { max-width: 700px; margin: 0 auto; color: #ccc; }
+
+    
+    .service {
+      background: #111; padding: 25px; border-radius: 12px;
+      width: 300px; transition: 0.3s; color: #fff; border: 1px solid transparent;
+    }
+    .service:hover { border-color: #f0c36d; transform: translateY(-6px); }
+    .service-cards { display: flex; justify-content: center; flex-wrap: wrap; gap: 25px; }
+
+   
+    .works-gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .work-item {
+      background: #111; border: 1px solid #222; border-radius: 10px;
+      overflow: hidden; width: 280px; text-align: center; transition: 0.3s;
+    }
+    .work-item img { width: 100%; height: 180px; object-fit: cover; }
+    .work-item h3 { color: #f0c36d; padding: 10px; }
+    .work-item:hover { transform: translateY(-5px); border-color: #f0c36d; }
+
+   
+    .skill-item { background: #111; padding: 25px; border-radius: 12px;
+      width: 300px; color: #fff; border: 1px solid transparent; transition: 0.3s;
+    }
+    .skill-item:hover { border-color: #f0c36d; }
+    .skills-list { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+
+    /* ===== CV ===== */
+    .cv a { display: inline-block; padding: 10px 25px; background: #f0c36d; color: #000;
+      border-radius: 6px; text-decoration: none; font-weight: 600; transition: 0.3s;
+    }
+    .cv a:hover { background: #fff; }
+
+    /* ===== CONTACT ===== */
+    .contact-section { background: #111; color: #fff; padding: 80px 0; }
+    .contact-info i { color: #f0c36d; }
+    .contact-info h5 { color: #f0c36d; }
+    .contact-form .form-control { background: transparent; border: 1px solid #f0c36d; color: #fff; }
+    .contact-form button {
+      background-color: #f0c36d; color: #000; border: none; padding: 10px 25px; transition: 0.3s;
+    }
+    .contact-form button:hover { background-color: #fff; color: #000; }
+
+    /* ===== FOOTER ===== */
+    footer { text-align: center; background: #000; color: #fff; padding: 20px; }
+    footer a { color: #f0c36d; margin: 0 10px; text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== LOADER ===== -->
+  <div class="loader-wrapper" id="loaderWrapper">
+    <div class="load-text">
+      <span>L</span><span>o</span><span>a</span><span>d</span><span>i</span><span>n</span><span>g</span>
+    </div>
+    <div class="loader-dots">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="logo"><img src="CODE.jpg" alt="Logo"></div>
+    <nav>
+      <ul>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#works">Réalisations</a></li>
+        <li><a href="#skills">Compétences</a></li>
+        <li><a href="#cv">CV</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="about">
+    <img src="WhatsApp Image 2025-03-03 à 23.18.47_d7b9fdfa.jpg" alt="Photo de profil">
+    <h1>Salih Hrouchane</h1>
+    <h2>Développeur Front-End </h2>
+    <p>Étudiant à l’Ecole Normale Supérieure, passionné par la création de solutions numériques innovantes.</p>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section id="services">
+    <h2>Mes Services</h2>
+    <div class="service-cards">
+      <div class="service"><h3>Développement Web</h3><p>Création de sites modernes et responsives avec une expérience utilisateur fluide.</p></div>
+      <div class="service"><h3>Design Graphique</h3><p>Conception de visuels créatifs et identités visuelles professionnelles.</p></div>
+      <div class="service"><h3>Applications Mobiles</h3><p>Développement d’applications performantes et intuitives.</p></div>
+    </div>
+  </section>
+
+  <!-- ===== WORKS ===== -->
+  <section id="works">
+    <h2>Mes Réalisations</h2>
+    <div class="works-gallery">
+      <div class="work-item"><img src="Capture d’écran 2025-03-03 235907.png" alt=""><h3>Site E-commerce</h3></div>
+      <div class="work-item"><img src="port.png" alt=""><h3>Portfolio</h3></div>
+      <div class="work-item"><img src="Capture d’écran 2025-10-19 161311.png" alt=""><h3>art life</h3></div>
+      <div class="work-item"><img src="Capture d’écran 2025-03-04 001557.png" alt=""><h3>Gestion de Stock</h3></div>
+       <div class="work-item"><img src="Capture d’écran 2025-10-19 161726.png" alt=""><h3>systeme de gestione de stock</h3></div>
+      <div class="work-item"><img src="Capture d’écran 2025-03-04 000214.png" alt=""><h3>Réservation d’hôtel</h3></div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills">
+    <h2>Mes Compétences</h2>
+    <div class="skills-list">
+      <div class="skill-item"><h3>Web</h3><p>HTML, CSS, JS, React, Node.js</p></div>
+      <div class="skill-item"><h3>Design</h3><p>Photoshop, Illustrator, Figma</p></div>
+      <div class="skill-item"><h3>Mobile</h3><p>React Native, Flutter</p></div>
+    </div>
+  </section>
+
+  <!-- ===== CV ===== -->
+  <section id="cv" class="cv">
+    <h2>Mon CV</h2>
+    <p>Téléchargez mon CV pour découvrir mon parcours.</p>
+    <a href="cv/cv.html" download>Télécharger le CV</a>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2>Contactez-moi</h2>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="contact-info">
+            <div class="mb-4"><i class="ri-map-pin-line fs-3"></i><h5>Adresse</h5><p>Meknès, Maroc</p></div>
+            <div class="mb-4"><i class="ri-phone-line fs-3"></i><h5>Téléphone</h5><p>+212 7 12 74 97 32</p></div>
+            <div class="mb-4"><i class="ri-mail-line fs-3"></i><h5>Email</h5><p>Salihhrouchane2@gmail.com</p></div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="contact-form">
+            <form action="mailto:Salihhrouchane2@gmail.com" method="post" enctype="text/plain">
+              <div class="row g-3">
+                <div class="col-md-6"><label>Nom Complet</label><input type="text" name="name" class="form-control" required></div>
+                <div class="col-md-6"><label>Email</label><input type="email" name="email" class="form-control" required></div>
+                <div class="col-md-12"><label>Sujet</label><input type="text" name="subject" class="form-control" required></div>
+                <div class="col-md-12"><label>Message</label><textarea name="message" rows="5" class="form-control" required></textarea></div>
+                <div class="col-md-12 text-end"><button type="submit">Envoyer <i class="ri-send-plane-fill ms-1"></i></button></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>&copy; 2025 Salih Hrouchane — Tous droits réservés.</p>
+    <div>
+      <a href="https://www.linkedin.com/in/salih-hrouchane-80a0922b4" target="_blank"><i class="ri-linkedin-box-fill fs-3"></i></a>
+      <a href="#"><i class="ri-instagram-fill fs-3"></i></a>
+      <a href="#"><i class="ri-github-fill fs-3"></i></a>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPT ===== -->
+  <script>
+    window.addEventListener('load', () => {
+      // Pause 2.5s puis fade-out
+      setTimeout(() => {
+        const loader = document.getElementById('loaderWrapper');
+        loader.style.opacity = '0';
+        loader.style.transition = 'opacity 0.5s ease';
+        setTimeout(() => { loader.style.display = 'none'; }, 500);
+      }, 2500);
+    });
+  </script>
+
+</body>
+</html>
